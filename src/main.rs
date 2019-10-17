@@ -4,7 +4,7 @@ use std::{collections::HashMap, fs, path::Path};
 
 fn main() {
     let mut data = Data::load();
-    for _ in 0..10 {
+    for _ in 0..15 {
         data.coarsen();
     }
 
@@ -206,8 +206,8 @@ impl Data {
             for (x, word) in tweet.iter().enumerate() {
                 match word_map.get(word) {
                     Some(i) => {
-                        /* looks at the next 10 words, so words within 20 words get an edge */
-                        for y in (x + 1..x + 10).filter(|y| *y < len) {
+                        /* looks at the next 4 words, so words within 8 words get an edge */
+                        for y in (x + 1..x + 4).filter(|y| *y < len) {
                             match word_map.get(&tweet[y]) {
                                 Some(j) => {
                                     let val;
